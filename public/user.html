@@ -127,13 +127,23 @@
             margin-top: 1rem;
             width: 100%;
             border-collapse: collapse;
+            
         }
-
+        /* #scheduleTable tr:nth-child(even) {
+            background-color: #6090FD;
+        }
+        #scheduleTable tr:nth-child(odd) {
+            background-color: #AAB6FB;
+        } */
         #scheduleTable th, #scheduleTable td {
             padding: 0.5rem;
             text-align: center;
             border: 1px solid #ddd;
+            word-wrap: break-word;  /* Breaks long words */
+            white-space: normal;    /* Allows text to wrap */
+            overflow: hidden;       /* Prevents text overflow */
         }
+
 
         #scheduleTable th {
             background: #00457c;
