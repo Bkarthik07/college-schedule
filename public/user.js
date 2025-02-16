@@ -184,7 +184,7 @@ document.getElementById('view-schedule-btn').addEventListener('click', function(
     const day = document.getElementById('day').value;
 
     // Make the API request to get the schedule
-    fetch(`http://localhost:4000/getSchedule?year=${encodeURIComponent(year)}&department=${encodeURIComponent(department)}&section=${encodeURIComponent(section)}&day=${encodeURIComponent(day)}`)
+    fetch(`https://college-schedule.vercel.app/getSchedule?year=${encodeURIComponent(year)}&department=${encodeURIComponent(department)}&section=${encodeURIComponent(section)}&day=${encodeURIComponent(day)}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
