@@ -120,7 +120,7 @@ classScheduleForm.addEventListener('submit', async (e) => {
 
     try {
         // Send data to the backend to add the schedule
-        const response = await fetch('http://localhost:4000/addSchedule', {
+        const response = await fetch('https://college-schedule.vercel.app/addSchedule', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ classScheduleForm.addEventListener('submit', async (e) => {
 async function showScheduleForDate(dateStr) {
     try {
         // Send request to fetch schedule for the selected date
-        const response = await fetch(`http://localhost:4000/getSchedule?date=${dateStr}`);
+        const response = await fetch(`https://college-schedule.vercel.app/getSchedule?date=${dateStr}`);
         const data = await response.json();
 
         if (response.ok) {
