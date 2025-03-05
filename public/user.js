@@ -14,6 +14,8 @@ let scheduledClasses = []; // Store scheduled classes by specific date
 function renderCalendar(month, year) {
     const firstDay = new Date(year, month, 1).getDay(); // Day of the week of the first date
     const daysInMonth = new Date(year, month + 1, 0).getDate(); // Total days in the current month
+    const today = new Date();
+    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
     // Update Month and Year Display
     calendarMonth.innerText = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
@@ -24,6 +26,7 @@ function renderCalendar(month, year) {
     // Fill blank spaces for days before the first day of the current month
     for (let i = 0; i < firstDay; i++) {
         const blank = document.createElement('div');
+        blank.classList.add('empty'); // Add a class for styling if needed
         calendarDates.appendChild(blank);
     }
 
@@ -32,20 +35,23 @@ function renderCalendar(month, year) {
         const dateElem = document.createElement('div');
         dateElem.innerText = date;
         dateElem.classList.add('date');
-        
-        // Highlight scheduled days (for specific dates, not just day of week)
+
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
-        if (scheduledClasses.includes(dateStr)) {
-            dateElem.classList.add('scheduled'); // Add custom class for scheduled days
+
+        // Highlight today's date
+        if (dateStr === todayStr) {
+            dateElem.classList.add('today');
         }
 
-        dateElem.addEventListener('click', () => {
-            // Remove active class from all dates
-            document.querySelectorAll('.date').forEach(d => d.classList.remove('active'));
-            // Add active class to the selected date
-            dateElem.classList.add('active');
+        // Highlight scheduled days
+        if (scheduledClasses.includes(dateStr)) {
+            dateElem.classList.add('scheduled');
+        }
 
-            // Show schedule for this day
+        // Add click event to show schedule for the selected date
+        dateElem.addEventListener('click', () => {
+            document.querySelectorAll('.date').forEach(d => d.classList.remove('active'));
+            dateElem.classList.add('active');
             showScheduleForDate(dateStr);
         });
 
