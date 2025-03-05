@@ -153,32 +153,45 @@ classScheduleForm.addEventListener('submit', async (e) => {
 });
 
 // Show Schedule for Specific Date
-async function showScheduleForDate(dateStr) {
-    try {
-        // Send request to fetch schedule for the selected date
-        const response = await fetch(`https://college-schedule.vercel.app/getSchedule?date=${dateStr}`);
-        const data = await response.json();
+// async function showScheduleForDate(dateStr) {
+//     try {
+//         // Send request to fetch schedule for the selected date
+//         const response = await fetch(`https://college-schedule.vercel.app/getSchedule?date=${dateStr}`);
+//         const data = await response.json();
 
-        if (response.ok) {
-            const scheduleData = data.schedule || [];
-            scheduleTableBody.innerHTML = ''; // Clear previous data
+//         if (response.ok) {
+//             const scheduleData = data.schedule || [];
+//             scheduleTableBody.innerHTML = ''; // Clear previous data
 
-            if (scheduleData.length > 0) {
-                // Populate schedule table with fetched data
-                populateScheduleTable(scheduleData);
+//             if (scheduleData.length > 0) {
+//                 // Populate schedule table with fetched data
+//                 populateScheduleTable(scheduleData);
 
-                // Display the schedule table container
-                scheduleTableContainer.style.display = 'block';
-            } else {
-                alert('No schedule found for the selected date.');
-            }
-        } else {
-            alert('Failed to fetch schedule: ' + data.error);
-        }
-    } catch (error) {
-        console.error('Error fetching schedule:', error);
-        alert('Error connecting to the server.');
-    }
+//                 // Display the schedule table container
+//                 scheduleTableContainer.style.display = 'block';
+//             } else {
+//                 alert('No schedule found for the selected date.');
+//             }
+//         } else {
+//             alert('Failed to fetch schedule: ' + data.error);
+//         }
+//     } catch (error) {
+//         console.error('Error fetching schedule:', error);
+//         alert('Error connecting to the server.');
+//     }
+// }
+function showScheduleForDate(dateStr) {
+    // Convert date string (YYYY-MM-DD) to a Date object
+    const dateObj = new Date(dateStr);
+
+    // Get the weekday name (e.g., Monday, Tuesday)
+    const options = { weekday: 'long' };
+    const weekdayName = dateObj.toLocaleDateString('en-US', options);
+
+    // Set the selected weekday in the form's "day" input field
+    document.getElementById('day').value = weekdayName;
+
+    console.log(`Selected Day: ${weekdayName}`);
 }
 
 // Search and View Schedule for Specific Criteria
