@@ -30,16 +30,17 @@
             flex-direction: column;
         }
 
-        header {
-/*             display: flex;
-            justify-content: space-between;
-            align-items: center; */
-            background: #00457c;
-            color: white;
-            padding: 1rem;
-            position:fixed;
-            width:100%;
-        }
+       header {
+    background: #00457c;
+    color: white;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
 
 
         .user-info {
@@ -69,13 +70,13 @@
         }
 
         main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 1rem;
-            gap: 1rem;
-            margin-top:140px;
-        }
+    margin-top: 160px; /* Adjust based on your actual header height */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+}
 
         .sidebar {
             flex: 1 1 150px;
@@ -159,6 +160,29 @@
             background: #00457c;
             color: white;
         }
+         footer {
+    
+    background: #00457c;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    /* flex-wrap: wrap; */
+    border-top: 2px solid #003b6b;
+    border-radius: 10px;
+}
+
+footer div {
+    margin: 0.5rem 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+footer strong {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -171,7 +195,15 @@
                 flex-direction: column;
                 align-items: center;
             }
+                     footer {
+                flex-direction: column;
+                text-align: center;
+        }
 
+            footer div {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
             .sidebar, .class-scheduling-container {
                 flex: 1 1 100%;
             }
@@ -352,6 +384,18 @@
                 </div>
             </section>
         </main>
+                <footer>
+            <div style="text-align: left;">
+                <strong>Developed By:</strong>
+                Ms. B Sindhuja ,Asst.Professor<br>
+                <!-- Gokaraju Rangaraju Institute of Engineering and Technology -->
+               
+            </div>
+            <div style="text-align: center;">
+               
+                © 2025 All Rights Reserved
+            </div>
+        </footer>
     </div>
     <script src="user.js"></script>
 </body>
